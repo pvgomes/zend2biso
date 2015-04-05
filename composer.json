@@ -9,6 +9,7 @@
         "zendframework/zendframework": "2.2.*",
         "doctrine/doctrine-orm-module": "0.7.*",
         "zendframework/zend-developer-tools": "dev-master",
+        "predis/predis": "1.1.*@dev",
         "biso": "dev-master"
     },
     "repositories": [
