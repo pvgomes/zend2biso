@@ -15,6 +15,9 @@ data/sessions/
 data/tmp/
 temp/
 
+# PHPSTORM
+.idea/*
+
 # Legacy ZF1
 demos/
 extras/documentation
