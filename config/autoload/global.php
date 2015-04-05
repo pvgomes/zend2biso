@@ -15,6 +15,10 @@ return array(
         'username' => 'dddzf2user',
         'password' => 'dddzf2pass',
     ),
+    'redis' => array(
+        'host'     => '127.0.0.1',
+        'port'     => 6379
+    ),
     'acl' => array(
         'roles' => array(
             'guest' => null,
