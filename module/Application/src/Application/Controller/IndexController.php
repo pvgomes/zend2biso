@@ -21,4 +21,11 @@ class IndexController extends ActionController
         $product = $productService->get(1);
         die(var_dump($product));
     }
+
+    public function createProductAction()
+    {
+        $productService = $this->getService('Application\Service\Product');
+        $data = array();
+        $productService->create($data);
+    }
 }

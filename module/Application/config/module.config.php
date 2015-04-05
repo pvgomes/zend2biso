@@ -18,12 +18,12 @@ return array(
             'application_entities' => array(
                 'class' =>'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
                 'cache' => 'array',
-                'paths' => array(__DIR__ . '/../src/Application/Domain/Entity')
+                'paths' => array(__DIR__ . '/../src/Application/Infrastructure/Entity')
             ),
 
             'orm_default' => array(
                 'drivers' => array(
-                    'Application\Domain\Entity' => 'application_entities'
+                    'Application\Infrastructure\Entity' => 'application_entities'
                 )
             ))),
     'router' => array(
@@ -74,7 +74,7 @@ return array(
                     return new Service\Configuration();
             },
             'Session' => function($sm) {
-                    return new Container('marley');
+                    return new Container('zend2biso');
             },
             'Application\Service\Auth' => function($sm) {
                     $dbAdapter = $sm->get('DbAdapter');
