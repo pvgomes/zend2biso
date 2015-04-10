@@ -1,0 +1,38 @@
+server {
+
+  server_name zend2biso.dev;
+
+  access_log  /var/log/nginx/zend2biso.access.log;
+  error_log   /var/log/nginx/zend2biso.error.log;
+
+  client_max_body_size  5m;
+  client_header_timeout 1200;
+  client_body_timeout   1200;
+  send_timeout          1200;
+  keepalive_timeout     1200;
+
+  set $thttps off;
+  if ($http_x_forwarded_proto = https) {
+#    set $thttps on;
+  }
+  if ($http_x_forwarded_proto = HTTPS) {
+ #   set $thttps on;
+  }
+
+  root        /zend2biso/public/;
+  try_files   $uri $uri/ /index.php?$args;
+  index       index.php;
+
+  location ~ \.php$ {
+    fastcgi_pass    127.0.0.1:9000;
+    fastcgi_index   index.php;
+    include         fastcgi_params;
+
+    fastcgi_connect_timeout 1200;
+    fastcgi_send_timeout    7200;
+    fastcgi_read_timeout    7200;
+    fastcgi_param   SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    fastcgi_param   APPLICATION_ENV dev;
+  }
+
+}

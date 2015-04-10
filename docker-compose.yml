@@ -1,0 +1,20 @@
+web:
+    build: ./docker/web
+    environment:
+        - VIRTUAL_HOST=zend2biso.dev
+    links:
+        - redis:redis
+    privileged: true
+    volumes:
+        - .:/zend2biso
+    ports:
+        - "80:80"
+    entrypoint: /start-biso.sh
+redis:
+    build: ./docker/redis
+    privileged: true
+    volumes:
+        - ./docker/redis:/data
+    ports:
+        - "6379:6379"
+    entrypoint: redis-server
