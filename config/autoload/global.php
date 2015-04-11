@@ -16,7 +16,7 @@ return array(
         'password' => 'dddzf2pass',
     ),
     'redis' => array(
-        'host'     => '127.0.0.1',
+        'host'     => 'zend2biso_redis_1',
         'port'     => 6379
     ),
     'acl' => array(

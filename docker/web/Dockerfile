@@ -72,8 +72,8 @@ RUN php5enmod amqp && php5enmod igbinary && php5enmod snappy
 WORKDIR /
 RUN rm -rf rabbitmq-c/ && rm -rf igbinary/ && rm -rf php-snappy/
 
-COPY start-bob-alice.sh /start-bob-alice.sh
-RUN chmod a+x /start-bob-alice.sh
+COPY start-biso.sh /start-biso.sh
+RUN chmod a+x /start-biso.sh
 
 COPY zend2biso.dev /etc/nginx/sites-available/zend2biso.dev
 
