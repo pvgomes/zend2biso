@@ -39,7 +39,6 @@ class PredisProduct implements Domain\Repository\Product
             die("Redis exception ". $e->getMessage());
         } catch(\Exception $e)
         {
-            var_dump($e);
             die("Exception ". $e->getMessage());
         }
 
