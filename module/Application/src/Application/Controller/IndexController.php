@@ -19,7 +19,10 @@ class IndexController extends ActionController
     {
         $productService = $this->getService('Application\Service\Product');
         $product = $productService->get(1);
-        die(var_dump($product));
+
+        return new ViewModel(array(
+            'product' => $product
+        ));
     }
 
     public function createProductAction()

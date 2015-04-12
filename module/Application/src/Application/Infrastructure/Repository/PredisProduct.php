@@ -4,6 +4,7 @@ namespace Application\Infrastructure\Repository;
 
 use \Domain;
 use Application\Infrastructure\Entity;
+use MyProject\Proxies\__CG__\OtherProject\Proxies\__CG__\stdClass;
 use Predis\PredisException;
 
 class PredisProduct implements Domain\Repository\Product
@@ -33,7 +34,10 @@ class PredisProduct implements Domain\Repository\Product
             $product->setSize($this->predisClient->get('product:'.$id.':size'));
             $product->setOriginalPrice($this->predisClient->get('product:'.$id.':originalPrice'));
             $product->setSpecialPrice($this->predisClient->get('product:'.$id.':specialPrice'));
-            $product = Domain\Factory\Product::build($product->toArray());
+            $productDomain = Domain\Factory\Product::build((object) $product->toArray());
+            $productDomain->setName($product->getName());
+            $productDomain->setDescription($product->getDescription());
+            $productDomain->setEan($product->getEan());
         } catch(PredisException $e)
         {
             die("Redis exception ". $e->getMessage());
@@ -42,7 +46,7 @@ class PredisProduct implements Domain\Repository\Product
             die("Exception ". $e->getMessage());
         }
 
-        return $product;
+        return $productDomain;
     }
 
     public function persist(Entity\Product $product)
