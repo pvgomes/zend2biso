@@ -28,8 +28,9 @@ class Product
     {
         $productEntity = new Infrastructure\Entity\Product();
         $productEntity->setId(1);
-        $productEntity->setName("Gear Of War XBOX 360");
-        $productEntity->setDescription('Jogo Gear Of War para XBOX 360');
+        $productEntity->setName("Gears Of War XBOX 360");
+        $productEntity->setDescription('O terceiro episódio de um dos melhores games da categoria é marcado pela volta dos protagonistas, que agora vêm acompanhados de diferentes aliados (com direito a modo cooperativo exclusivo para quatro jogadores), em busca da salvação da raça humana, esta limitada a apenas um navio.
+Os tradicionais Locusts agora podem ser eliminados através de uma série de sequências de finalização (uma para cada arma), incluindo rajadas de fogo com lança-chamas e até mesmo cortes na garganta, feitos com a baioneta anexada à metralhadora. ');
         $productEntity->setQuantity(10);
         $productEntity->setCurrency('BRL');
         $productEntity->setWeight('20');

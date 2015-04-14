@@ -1,5 +1,55 @@
 <?php /** @var \Domain\Entity\Product $product */ ?>
 <?php $product = $this->product; ?>
-<br>
-<br>
-<h3><?php echo $product->name(); ?></h3>
+<div class="col-md-12">
+    <div class="center-block text-center">
+        <h1>E-Commerce Zend2Biso</h1>
+        <p class="lead">Simple Business Isolation</p>
+    </div>
+    <div class="container">
+        <div class="menu row">
+            <div class="product col-sm-6">
+
+                <h2><?php echo $product->name(); ?></h2>
+                <?php if ($product->price()->hasSpecial()): ?>
+                    <h2 class="text-right">
+                        <?php echo $product->price()->special()->currency()->isoCode(); ?>
+                        <?php echo $product->price()->special()->amount(); ?>
+                    </h2>
+                <?php endif; ?>
+                <button class="btn btn-primary btn-lg ">Adicionar ao carrinho</button>
+                <hr>
+
+
+                <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#reviews">Revisões</a></li>
+                    <li><a data-toggle="tab" href="#details">Detalhes</a></li>
+                    <li><a data-toggle="tab" href="#sizing">Especificações</a></li>
+                </ul>
+
+                <div class="tab-content">
+                    <div class="tab-pane active" id="reviews">
+
+                        <h4>Buyer Reviews</h4>
+                        <ul class="list-unstyled">
+                            <li class="clearfix">(Mike R.) Curti.. <i class="fa fa-star fa-2x yellow pull-right"></i></li>
+                            <li class="clearfix">(Karen) Gostei.. <i class="fa fa-star fa-2x yellow pull-right"></i></li>
+                            <li class="clearfix">(João Chatão) Cheio de lag..  <i class="fa fa-star fa-2x yellow pull-right"></i><i class="fa fa-star fa-2x yellow pull-right"></i></li>
+                            <li class="clearfix">(Chaves) Prefiria ter ido ver o pelé.. <i class="fa fa-star fa-2x yellow pull-right"></i></li>
+                        </ul>
+
+                    </div>
+                    <div class="tab-pane" id="details"><h4><?php echo $product->description(); ?></h4></div>
+                    <div class="tab-pane" id="sizing"><h4><?php echo $product->specification()->size(); ?></h4></div>
+                </div>
+
+
+            </div>
+            <div class="col-sm-6">
+                <div class="productsrow">
+                    <a href="#"><img class="img-responsive" src="/cdn/gow.jpg"></a>
+                </div>
+            </div>
+        </div>
+        <!--/row-->
+    </div>
+</div>
