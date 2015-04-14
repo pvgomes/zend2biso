@@ -10,13 +10,27 @@
             <div class="product col-sm-6">
 
                 <h2><?php echo $product->name(); ?></h2>
-                <?php if ($product->price()->hasSpecial()): ?>
+                <?php if($product->price()->hasSpecial()): ?>
                     <h2 class="text-right">
+                        De
+                        <?php echo $product->price()->original()->currency()->isoCode(); ?>
+                        <?php echo $product->price()->original()->amount(); ?>
+                        Por
                         <?php echo $product->price()->special()->currency()->isoCode(); ?>
                         <?php echo $product->price()->special()->amount(); ?>
                     </h2>
+                <?php else: ?>
+                    <?php echo $product->price()->original()->currency()->isoCode(); ?>
+                    <?php echo $product->price()->original()->amount(); ?>
                 <?php endif; ?>
-                <button class="btn btn-primary btn-lg ">Adicionar ao carrinho</button>
+
+                <?php if($product->isAvailable()): ?>
+                    <p class="bg-success">Em estoque</p>
+                    <button class="btn btn-primary btn-lg ">Adicionar ao carrinho</button>
+                <?php else: ?>
+                    <p class="bg-danger">Sem estoque</p>
+                <?php endif; ?>
+
                 <hr>
 
 
@@ -39,7 +53,12 @@
 
                     </div>
                     <div class="tab-pane" id="details"><h4><?php echo $product->description(); ?></h4></div>
-                    <div class="tab-pane" id="sizing"><h4><?php echo $product->specification()->size(); ?></h4></div>
+                    <div class="tab-pane" id="sizing">
+                        <h4>
+                            Tamanho: <?php echo $product->specification()->size(); ?> <br>
+                            Peso: <?php echo $product->specification()->weight(); ?><br>
+                            Largura: <?php echo $product->specification()->width(); ?><br>
+                        </h4></div>
                 </div>
 
 
